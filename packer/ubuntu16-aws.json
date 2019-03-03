@@ -1,12 +1,18 @@
 {
+ "variables": {
+   "aws_access_key": "",
+   "aws_secret_key": "",
+   "aws_source_ami": "ami-086a09d5b9fa35dc7",
+   "aws_instance_type": "t2.micro",
+  },
  "builders": [
    {
     "type": "amazon-ebs",
-    "access_key": "AKIAI3BBNS6FRCXSU7DQ",
-    "secret_key": "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",
+    "access_key": "{{user `aws_access_key`}}",
+    "secret_key": "{{user `aws_secret_key`}}",
     "region": "eu-central-1",
-    "source_ami": "ami-086a09d5b9fa35dc7",
-    "instance_type": "t2.micro",
+    "source_ami": "{{user `aws_source_ami`}}",
+    "instance_type": "{{user `aws_instance_type`}}",
     "ssh_username": "ubuntu",
     "ami_name": "reddit-base-{{timestamp}}"
    }
