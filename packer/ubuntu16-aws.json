@@ -1,0 +1,25 @@
+{
+ "builders": [
+   {
+    "type": "amazon-ebs",
+    "access_key": "AKIAI3BBNS6FRCXSU7DQ",
+    "secret_key": "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",
+    "region": "eu-central-1",
+    "source_ami": "ami-086a09d5b9fa35dc7",
+    "instance_type": "t2.micro",
+    "ssh_username": "ubuntu",
+    "ami_name": "reddit-base-{{timestamp}}"
+   }
+ ],
+ "provisioners": [
+   {
+    "type": "shell",
+    "script": "scripts/install_ruby.sh"
+   },
+   {
+    "type": "shell",
+    "script": "scripts/install_mongodb.sh",
+    "execute_command": "sudo {{.Path}}"
+   }
+ ]
+}
